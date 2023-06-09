@@ -7,12 +7,15 @@ using namespace std;
 
 class Cohete {
 public:
-	Cohete(const string& nombre, int alaIzquierda, int alaDerecha, float gasolina);
+	Cohete(string& nombre, int alaIzquierda, int alaDerecha, float gasolina);
 
-	const string& getNombre() const;
-	int getAlaIzquierda() const;
-	int getAlaDerecha() const;
-	float getGasolina() const;
+	const string& getNombre();
+	int getAlaIzquierda();
+	int getAlaDerecha();
+	float getGasolina();
+	void setAlaIzquierda(int);
+	void setAlaDerecha(int);
+	void setGasolina(float valor);
 
 private:
 	string nombre;
