@@ -18,5 +18,19 @@
     <ClCompile Include="Lab8P3_VíctorRomero.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cohete.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Marte.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cohete.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Marte.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

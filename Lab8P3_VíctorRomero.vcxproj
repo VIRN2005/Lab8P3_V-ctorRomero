@@ -127,7 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cohete.cpp" />
     <ClCompile Include="Lab8P3_VíctorRomero.cpp" />
+    <ClCompile Include="Marte.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cohete.h" />
+    <ClInclude Include="Marte.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
