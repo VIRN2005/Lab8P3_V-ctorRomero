@@ -9,10 +9,9 @@ const float Neptuno::Probabilidad_Asteroides = 0.9f;
 const int Neptuno::Dano_Asteroides = 40;
 const int Neptuno::Ruta_Aleatoria = 3;
 
-bool Neptuno::llegar(Cohete* cohete) {
+string Neptuno::llegar(Cohete* cohete) {
     if (cohete->getGasolina() < Gasolina_Requerida) {
-        std::cout << "El cohete " << cohete->getNombre() << " se quedó sin gasolina y no pudo llegar a Neptuno." << std::endl;
-        return false;
+        return "El cohete " + cohete->getNombre() + " se quedó sin gasolina y no pudo llegar a Neptuno.\n";
     }
 
     float probabilidad = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
@@ -21,20 +20,16 @@ bool Neptuno::llegar(Cohete* cohete) {
         cohete->setAlaDerecha(cohete->getAlaDerecha() - Dano_Asteroides);
 
         if (cohete->getAlaIzquierda() <= 0 && cohete->getAlaDerecha() <= 0) {
-            cout << "El cohete " << cohete->getNombre() << " perdió ambas alas y no pudo llegar a Neptuno." << endl;
-            return false;
+            return "El cohete " + cohete->getNombre() + " perdió ambas alas y no pudo llegar a Neptuno.";
         }
         else if (cohete->getAlaIzquierda() <= 0) {
-            cout << "El cohete " << cohete->getNombre() << " perdió el ala izquierda y no pudo llegar a Neptuno." << endl;
-            return false;
+            return "El cohete " + cohete->getNombre() + " perdió el ala izquierda y no pudo llegar a Neptuno.";
         }
         else if (cohete->getAlaDerecha() <= 0) {
-            cout << "El cohete " << cohete->getNombre() << " perdió el ala derecha y no pudo llegar a Neptuno." << endl;
-            return false;
+            return "El cohete " + cohete->getNombre() + " perdió el ala derecha y no pudo llegar a Neptuno.";
         }
     }
 
     int ruta = rand() % Ruta_Aleatoria;
-    cout << "El cohete " << cohete->getNombre() << " llegó con éxito a Neptuno a través de la ruta " << ruta << endl;
-    return true;
+    return "El cohete " + cohete->getNombre() + " llegó con éxito a Neptuno a través de la ruta " + std::to_string(ruta);
 }

@@ -15,7 +15,7 @@ public:
     static const int Dano_Asteroides;
     static const int Ruta_Aleatoria;
 
-    static bool llegar(Cohete* cohete);
+    static string llegar(Cohete* cohete);
 };
 
 #endif 

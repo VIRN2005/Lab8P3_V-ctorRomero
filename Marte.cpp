@@ -5,10 +5,9 @@ const float Marte::Gasolina_Requerida = 400000.0f;
 const float Marte::Probabilidad_Asteroides = 0.2f;
 const int Marte::Dano_Asteroides = 40;
 
-bool Marte::llegar(Cohete* cohete) {
+string Marte::llegar(Cohete* cohete) {
     if (cohete->getGasolina() < Gasolina_Requerida) {
-        cout << "El cohete " << cohete->getNombre() << " se quedó sin gasolina y no pudo llegar a Marte." << endl;
-        return false;
+        return "El cohete " + cohete->getNombre() + " se quedó sin gasolina y no pudo llegar a Marte.\n";
     }
 
     float probabilidad = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
@@ -17,19 +16,16 @@ bool Marte::llegar(Cohete* cohete) {
         cohete->setAlaDerecha(cohete->getAlaDerecha() - Dano_Asteroides);
 
         if (cohete->getAlaIzquierda() <= 0 && cohete->getAlaDerecha() <= 0) {
-            cout << "El cohete " << cohete->getNombre() << " perdió ambas alas y no pudo llegar a Marte." << endl;
-            return false;
+            return "El cohete " + cohete->getNombre() + " perdió ambas alas y no pudo llegar a Marte.";
         }
         else if (cohete->getAlaIzquierda() <= 0) {
-            cout << "El cohete " << cohete->getNombre() << " perdió el ala izquierda y no pudo llegar a Marte." << endl;
-            return false;
+            return "El cohete " + cohete->getNombre() + " perdió el ala izquierda y no pudo llegar a Marte.";
         }
         else if (cohete->getAlaDerecha() <= 0) {
-            cout << "El cohete " << cohete->getNombre() << " perdió el ala derecha y no pudo llegar a Marte." << endl;
-            return false;
+            return "El cohete " + cohete->getNombre() + " perdió el ala derecha y no pudo llegar a Marte.";
         }
     }
 
-    cout << "El cohete " << cohete->getNombre() << " llegó con éxito a Marte." << endl;
-    return true;
+    return "El cohete " + cohete->getNombre() + " llegó con éxito a Marte.";
 }
+

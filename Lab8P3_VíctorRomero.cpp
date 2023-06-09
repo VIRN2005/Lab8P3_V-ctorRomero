@@ -8,6 +8,8 @@
 #include "Neptuno.h"
 using namespace std;
 
+static vector<Cohete*> cohetesV;
+
 // Leer el archivo
 void crearCohetes(const string& archivo, vector<Cohete>& cohetes) {
 	ifstream file(archivo);
@@ -33,19 +35,41 @@ void crearCohetes(const string& archivo, vector<Cohete>& cohetes) {
 		ss.ignore();
 		getline(ss, lugar_destino);
 
-		Cohete cohete(nombre, alaIzquierda, alaDerecha, gasolina);
-		cohetes.push_back(cohete);
+		Cohete* cohete = new Cohete(nombre, alaIzquierda, alaDerecha, gasolina, lugar_destino);
+		cohetesV.push_back(cohete);
 	}
 
 	file.close();
 }
 
 // Guardar la Bitacora (Ayudaaaaaaaaaaaaaaa)
-void guardarBitacora(const vector<string>& bitacora, const string& archivo) {
+void guardarBitacora(const string& archivo) {
+	vector<string> bitacora;
+
+	Marte marte;
+	Saturno saturno;
+	Neptuno neptuno;
+
 	ofstream file(archivo);
 	if (!file.is_open()) {
 		cout << "No se pudo crear el archivo de la bitácora." << endl;
 		return;
+	}
+
+	for (size_t i = 0; i < cohetesV.size(); i++) {
+		string aux;
+		if (cohetesV[i]->getLugarDestino() == "Marte") {
+			aux = marte.llegar(cohetesV[i]);
+			bitacora.push_back(aux);
+		}
+		else if (cohetesV[i]->getLugarDestino() == "Neptuno") {
+			aux = neptuno.llegar(cohetesV[i]);
+			bitacora.push_back(aux);
+		}
+		else if (cohetesV[i]->getLugarDestino() == "Saturno") {
+			aux = saturno.llegar(cohetesV[i]);
+			bitacora.push_back(aux);
+		}
 	}
 
 	for (const string& mensaje : bitacora) {
@@ -91,7 +115,7 @@ void menu() {
 			crearCohetes("spaceZ.txt", cohetes);
 			break;
 		case 2:
-			guardarBitacora(bitacora, archivo);
+			guardarBitacora(archivo);
 			cout << "Bitácora guardada correctamente." << std::endl;
 			break;
 		case 3:
@@ -105,8 +129,12 @@ void menu() {
 			break;
 		}
 
-		std::cout << std::endl;
+		cout << endl;
 	}
+	for (Cohete* cohete : cohetesV) {
+		delete cohete;
+	}
+	cohetesV.clear();
 }
 
 int main() {

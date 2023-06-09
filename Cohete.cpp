@@ -1,7 +1,7 @@
 #include "Cohete.h"
 
-Cohete::Cohete( string& nombre, int alaIzquierda, int alaDerecha, float gasolina)
-	: nombre(nombre), alaIzquierda(alaIzquierda), alaDerecha(alaDerecha), gasolina(gasolina) {}
+Cohete::Cohete(const std::string& nombre, int alaIzquierda, int alaDerecha, float gasolina, const std::string& destino)
+	: nombre(nombre), alaIzquierda(alaIzquierda), alaDerecha(alaDerecha), gasolina(gasolina), lugarDestino(destino) {}
 
 
 void Cohete::setAlaIzquierda(int resistencia) {
@@ -31,4 +31,8 @@ float Cohete::getGasolina()  {
 
 void Cohete::setGasolina(float valor) {
 	gasolina = valor;
+}
+
+string Cohete::getLugarDestino() const {
+	return lugarDestino;
 }

@@ -11,7 +11,7 @@ public:
     static const float Gasolina_Requerida;
     static const float Probabilidad_Asteroides;
     static const int Dano_Asteroides;
-    static bool llegar(Cohete* cohete);
+    static string llegar(Cohete* cohete);
 };
 
 #endif
